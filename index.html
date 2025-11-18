@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description" content="Premium sportswear designed for athletes who demand excellence. Shop our collection of high-performance athletic wear.">
+    <meta name="theme-color" content="#000000">
     <title>ActiveWear - Premium Sportswear</title>
     
     <!-- Bootstrap CSS -->
@@ -13,6 +15,11 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation -->
@@ -51,20 +58,47 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
-        <div class="container">
+        <!-- Hero Background Slideshow -->
+        <div class="hero-slideshow">
+            <div class="hero-slide active" style="background-image: url('resources/hero/hero1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('resources/hero/hero2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('resources/hero/hero3.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('resources/hero/hero4.jpg');"></div>
+        </div>
+        
+        <!-- Hero Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Hero Content -->
+        <div class="container hero-content">
             <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold mb-4 animate-fade-in">Elevate Your Performance</h1>
-                    <p class="lead mb-4">Premium sportswear designed for athletes who demand excellence. Comfort meets style.</p>
-                    <button class="btn btn-primary btn-lg me-3 mb-2">Shop Now</button>
-                    <button class="btn btn-outline-light btn-lg mb-2">View Collection</button>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image-placeholder">
-                        <i class="bi bi-person-arms-up"></i>
+                <div class="col-lg-8 col-xl-7">
+                    <h1 class="display-2 fw-bold mb-4 hero-title">Elevate Your Performance</h1>
+                    <p class="lead mb-4 hero-subtitle">Premium sportswear designed for athletes who demand excellence. Comfort meets style.</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary btn-lg me-3 mb-2">Shop Now</a>
+                        <a href="#collections" class="btn btn-outline-light btn-lg mb-2">View Collection</a>
                     </div>
                 </div>
             </div>
+        </div>
+        
+        <!-- Slideshow Controls -->
+        <div class="hero-controls">
+            <button class="hero-control-btn prev" id="heroPrev">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+            <button class="hero-control-btn next" id="heroNext">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Slideshow Indicators -->
+        <div class="hero-indicators">
+            <span class="hero-indicator active" data-slide="0"></span>
+            <span class="hero-indicator" data-slide="1"></span>
+            <span class="hero-indicator" data-slide="2"></span>
+            <span class="hero-indicator" data-slide="3"></span>
         </div>
     </section>
 

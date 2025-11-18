@@ -127,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initializeFilterButtons();
   initializeCartModal();
   initializeCartButton();
+  initializeHeroSlideshow();
 });
 
 // Load products dynamically
@@ -378,12 +379,121 @@ function initializeFilterButtons() {
   });
 }
 
+// Initialize Hero Slideshow
+function initializeHeroSlideshow() {
+  const slides = document.querySelectorAll(".hero-slide");
+  const indicators = document.querySelectorAll(".hero-indicator");
+  const prevBtn = document.getElementById("heroPrev");
+  const nextBtn = document.getElementById("heroNext");
+  let currentSlide = 0;
+  let slideInterval;
+
+  // Function to show specific slide
+  function showSlide(index) {
+    // Remove active class from all slides and indicators
+    slides.forEach((slide) => slide.classList.remove("active"));
+    indicators.forEach((indicator) => indicator.classList.remove("active"));
+
+    // Add active class to current slide and indicator
+    slides[index].classList.add("active");
+    indicators[index].classList.add("active");
+    currentSlide = index;
+  }
+
+  // Function to go to next slide
+  function nextSlide() {
+    let next = (currentSlide + 1) % slides.length;
+    showSlide(next);
+  }
+
+  // Function to go to previous slide
+  function prevSlide() {
+    let prev = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prev);
+  }
+
+  // Auto-play slideshow
+  function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+  }
+
+  function stopSlideshow() {
+    clearInterval(slideInterval);
+  }
+
+  // Event listeners for controls
+  nextBtn.addEventListener("click", () => {
+    nextSlide();
+    stopSlideshow();
+    startSlideshow(); // Restart auto-play
+  });
+
+  prevBtn.addEventListener("click", () => {
+    prevSlide();
+    stopSlideshow();
+    startSlideshow(); // Restart auto-play
+  });
+
+  // Event listeners for indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      showSlide(index);
+      stopSlideshow();
+      startSlideshow(); // Restart auto-play
+    });
+  });
+
+  // Pause slideshow on hover
+  const heroSection = document.querySelector(".hero-section");
+  heroSection.addEventListener("mouseenter", stopSlideshow);
+  heroSection.addEventListener("mouseleave", startSlideshow);
+
+  // Start the slideshow
+  startSlideshow();
+}
+
+// Update active nav link on scroll
+function updateActiveNavLink() {
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (window.scrollY >= sectionTop - 200) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
+  });
+}
+
+// Initialize active nav link tracking
+document.addEventListener("DOMContentLoaded", function () {
+  updateActiveNavLink();
+});
+
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
+      // Update active state immediately on click
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.classList.remove("active");
+      });
+      this.classList.add("active");
+
       const offset = 80;
       const targetPosition = target.offsetTop - offset;
       window.scrollTo({
