@@ -289,7 +289,7 @@ html {
 }
 
 .feature-card {
-    background: white;
+    background: rgb(248, 246, 246);
     border-radius: 15px;
     transition: all 0.3s ease;
     height: 100%;
@@ -350,7 +350,7 @@ html {
 .price {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--light-bg);
 }
 
 /* About Section */
@@ -1063,8 +1063,8 @@ html {
 
 /* Form Styles */
 .form-label {
-    font-weight: 600;
-    color: var(--text-dark);
+    font-weight: 300;
+    color: var(--light-bg);
     margin-bottom: 0.5rem;
 }
 

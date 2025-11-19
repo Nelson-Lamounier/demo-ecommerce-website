@@ -66,11 +66,11 @@ function calculateTotals() {
 
   document.getElementById(
     "checkoutSubtotal"
-  ).textContent = `$${subtotal.toFixed(2)}`;
+  ).textContent = `€${subtotal.toFixed(2)}`;
   document.getElementById("checkoutShipping").textContent =
-    shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`;
-  document.getElementById("checkoutTax").textContent = `$${tax.toFixed(2)}`;
-  document.getElementById("checkoutTotal").textContent = `$${total.toFixed(2)}`;
+    shipping === 0 ? "FREE" : `€${shipping.toFixed(2)}`;
+  document.getElementById("checkoutTax").textContent = `€${tax.toFixed(2)}`;
+  document.getElementById("checkoutTotal").textContent = `€${total.toFixed(2)}`;
 }
 
 // Remove from cart

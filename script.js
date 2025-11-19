@@ -173,7 +173,7 @@ function createProductCard(product) {
                 <div class="card-body">
                     <span class="badge bg-secondary mb-2">${collectionName}</span>
                     <h5 class="card-title fw-bold">${product.name}</h5>
-                    <p class="price mb-3">$${product.price.toFixed(2)}</p>
+                    <p class="price mb-3">€${product.price.toFixed(2)}</p>
                     <button class="btn btn-primary w-100 add-to-cart-btn" data-product-id="${
                       product.id
                     }">
@@ -232,7 +232,7 @@ function updateCartModal() {
         <p class="text-muted mt-3">Your cart is empty</p>
       </div>
     `;
-    cartTotal.textContent = "$0.00";
+    cartTotal.textContent = "€0.00";
     return;
   }
 
@@ -253,7 +253,7 @@ function updateCartModal() {
         <div class="flex-grow-1">
           <h6 class="mb-1">${item.name}</h6>
           <small class="text-muted">${collectionName}</small>
-          <p class="mb-0 fw-bold mt-1">$${item.price.toFixed(2)}</p>
+          <p class="mb-0 fw-bold mt-1">€${item.price.toFixed(2)}</p>
         </div>
         <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${index})">
           <i class="bi bi-trash"></i>
@@ -263,7 +263,7 @@ function updateCartModal() {
     cartModalBody.innerHTML += itemHTML;
   });
 
-  cartTotal.textContent = `$${total.toFixed(2)}`;
+  cartTotal.textContent = `€${total.toFixed(2)}`;
 }
 
 // Remove from cart
